@@ -2,13 +2,11 @@ import React, { useState } from "react";
 
 export default function Textform(props) {
   const handleUpClick = () => {
-    console.log("UpperCase was Clicked" + text);
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("Converted to UpperCase", "success");
   };
   const handleOnChange = (event) => {
-    console.log("on Change");
     setText(event.target.value);
   };
   const handleClearClick = () => {
@@ -17,7 +15,6 @@ export default function Textform(props) {
     props.showAlert("Text Cleared", "success");
   };
   const handleLowClick = () => {
-    console.log("LowerCase was Clicked" + text);
     let newText = text.toLowerCase();
     setText(newText);
     props.showAlert("Converted to LowerCase", "success");
@@ -28,10 +25,9 @@ export default function Textform(props) {
     props.showAlert("Sentence Counted", "success");
   };
   const handleCopy = () => {
-    console.log("i am copy");
-    var text = document.getElementById("myBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    const textBox = document.getElementById("myBox");
+    textBox.select();
+    navigator.clipboard.writeText(textBox.value);
     document.getSelection().removeAllRanges();
     props.showAlert("Copied to Clipboard!", "success");
   };
@@ -48,9 +44,7 @@ export default function Textform(props) {
           className="container mb-3"
           style={{
             color:
-              props.mode === "dark"
-                ? "white"
-                : "#042743" && props.mode === "pink"
+              props.mode === "dark" || props.mode === "pink"
                 ? "white"
                 : "#042743",
           }}
